@@ -5,6 +5,8 @@ const App = () => {
   const whatsappNumber = '5493513955642';
   const whatsappMessage = 'Hola! Vi este anuncio y quiero crear un usuario, gracias.';
 
+
+
   return (
     <div className='container d-flex justify-content-center align-items-center vh-100 flex-column'>
       <div className='wsp-box text-center'>
@@ -23,6 +25,11 @@ const App = () => {
           href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
           target="_blank"
           rel="noopener noreferrer"
+          // onClick={() => {
+          //   if (window.fbq) {
+          //     window.fbq('track', 'Contact');
+          //   }
+          // }}
         >
           Chatear por WhatsApp
         </a>
