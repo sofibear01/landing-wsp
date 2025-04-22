@@ -25,11 +25,6 @@ const App = () => {
           href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
           target="_blank"
           rel="noopener noreferrer"
-          // onClick={() => {
-          //   if (window.fbq) {
-          //     window.fbq('track', 'Contact');
-          //   }
-          // }}
         >
           Chatear por WhatsApp
         </a>
