@@ -1,6 +1,12 @@
 import './App.css'
 import whatsappLogo from './assets/logowhatsapp.svg'; // asegurate de tener el logo en assets
 
+declare global {
+  interface Window {
+    fbq: (event: string, action: string) => void;
+  }
+}
+
 const App = () => {
   const whatsappNumber = '5493513955642';
   const whatsappMessage = 'Hola! Vi este anuncio y quiero crear un usuario, gracias.';
@@ -22,9 +28,23 @@ const App = () => {
 
         <a
           className="btn-whatsapp mt-4"
-          href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => {
+            e.preventDefault(); // evitamos que navegue automáticamente
+
+            if (window.fbq) {
+              window.fbq('track', 'Contact');
+            }
+
+            setTimeout(() => {
+              window.open(
+                `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
+                '_blank'
+              );
+            }, 200); // 200ms le da tiempo a fbq de enviar el evento antes del cambio de pestaña
+          }}
         >
           Chatear por WhatsApp
         </a>
